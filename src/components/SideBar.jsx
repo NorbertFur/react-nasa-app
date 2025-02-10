@@ -1,16 +1,25 @@
-import React from 'react'
+import React from 'react';
 
-const SideBar = () => {
-  return (
-    <div>
-        <h2>The Brutal Martian Landscape</h2>
-        <div>
-            <p>Description</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab deserunt placeat vitae nesciunt voluptates dolorum quisquam.
-                 Asperiores veritatis sit mollitia fuga repellat corrupti dolores voluptatum exercitationem deserunt, odio quibusdam officiis.</p>
-        </div>
-    </div>
-  )
-}
+const SideBar = (props) => {
+	const { handleToggleModal, data } = props;
 
-export default SideBar
+	return (
+		<div className='sidebar'>
+			<div onClick={handleToggleModal} className='bgOverlay'></div>
+			<div className='sidebarContents'>
+				<h2>{data?.title}</h2>
+				<div className='descriptionContainer'>
+					<p className='descriptionTitle'>{data?.date}</p>
+					<p>
+						{data?.explanation}
+					</p>
+				</div>
+				<button onClick={handleToggleModal}>
+					<i className='fa-solid fa-arrow-right'></i>
+				</button>
+			</div>
+		</div>
+	);
+};
+
+export default SideBar;
